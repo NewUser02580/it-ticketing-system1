@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Edit' if ticket else 'Create' }} Ticket{% endblock %}
+{% block content %}
+<h2>{{ 'Edit' if ticket else 'Create' }} Ticket</h2>
+<form method="POST" class="card p-4 shadow-sm">
+  <div class="mb-3">
+    <label>Title</label>
+    <input name="title" class="form-control" required value="{{ ticket.title if ticket else '' }}">
+  </div>
+  <div class="mb-3">
+    <label>Description</label>
+    <textarea name="description" class="form-control" required>{{ ticket.description if ticket else '' }}</textarea>
+  </div>
+  {% if ticket %}
+  <div class="mb-3">
+    <label>Status</label>
+    <select name="status" class="form-select">
+      <option value="Open" {% if ticket.status == 'Open' %}selected{% endif %}>Open</option>
+      <option value="In Progress" {% if ticket.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+      <option value="Resolved" {% if ticket.status == 'Resolved' %}selected{% endif %}>Resolved</option>
+    </select>
+  </div>
+  {% endif %}
+  <button class="btn btn-success">{{ 'Update' if ticket else 'Create' }}</button>
+  <a href="/dashboard" class="btn btn-secondary">Back</a>
+</form>
+{% endblock %}

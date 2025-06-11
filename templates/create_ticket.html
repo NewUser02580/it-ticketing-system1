@@ -1,0 +1,22 @@
+<!-- templates/create_ticket.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Ticket</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Create a New Ticket</h1>
+    <form method="POST">
+        <label for="title">Issue Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="description">Issue Description:</label><br>
+        <textarea id="description" name="description" rows="5" required></textarea><br><br>
+
+        <button type="submit">Submit Ticket</button>
+    </form>
+    <br>
+    <a href="{{ url_for('home') }}">Back to Dashboard</a>
+</body>
+</html>
